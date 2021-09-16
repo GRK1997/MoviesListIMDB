@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # movieslist
+=======
+# Movies_list
+>>>>>>> 7590964c575c355d9de97eca1cf68aeed816ed77
 
 A new Flutter project.
 
