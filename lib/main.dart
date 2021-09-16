@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:hello_movies/models/movie.dart';
-import 'package:hello_movies/widgets/moviesWidget.dart';
+import 'package:Movies_list/models/movie.dart';
+import 'package:Movies_list/widgets/moviesWidget.dart';
 import 'package:http/http.dart' as http;
 
 void main() {

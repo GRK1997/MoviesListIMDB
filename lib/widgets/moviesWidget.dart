@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:hello_movies/models/movie.dart';
+import 'package:Movies_list/models/movie.dart';
 import 'search_widget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -34,6 +34,7 @@ class _MoviesWidgetState extends State<MoviesWidget> {
   Future searchMovie(String query) async => debounce(() async {
    // query="Batman";
   setState(() {
+    widget.movies=null;
     movies=null;
   }); 
         final response = await http.get("http://www.omdbapi.com/?s="+query+"&apikey=f96c7179");
@@ -59,7 +60,7 @@ if(response.statusCode == 200) {
     return Column(
       children: [
         buildSearch(),
-        movies!=null? Expanded(
+        movies!=null||widget.movies!=null? Expanded(
           child: ListView.builder(
             
               itemCount: widget.movies.length,
@@ -91,7 +92,7 @@ if(response.statusCode == 200) {
                   )),
                 );
               }),
-        ):Text("Search For Movies"),
+        ):Text("Search For Movies In A Search Bar"),
       ],
     );
   }
