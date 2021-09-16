@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:Movies_list/models/movie.dart';
+import 'package:movieslist/models/movie.dart';
 import 'search_widget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';

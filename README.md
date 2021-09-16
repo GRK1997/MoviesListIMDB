@@ -1,4 +1,4 @@
-# hello_movies
+# movieslist
 
 A new Flutter project.
 
