@@ -1,5 +1,7 @@
 
-class Movie {
+
+
+class Movie  {
   final String imdbId; 
   final String poster; 
   final String title; 

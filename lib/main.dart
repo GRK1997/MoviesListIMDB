@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:movieslist/models/SearchMovies.dart';
 import 'package:movieslist/models/movie.dart';
 import 'package:movieslist/widgets/moviesWidget.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(App());
@@ -61,7 +63,9 @@ class _App extends State<App> {
         elevation: 0.0,
       ),
       //extendBodyBehindAppBar: true,
-        body:MoviesWidget(movies: _movies),
+        body:ChangeNotifierProvider(
+          create: (context)=>SearchMovies(),
+          child: MoviesWidget(movies: _movies)),
          
       )
     );
