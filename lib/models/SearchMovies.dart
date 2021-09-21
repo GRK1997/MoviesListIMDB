@@ -5,11 +5,11 @@ import 'dart:convert';
 
 class SearchMovies extends ChangeNotifier {
   List<Movie> moviesList;
-  List<Movie> getListMovies() => moviesList;
+  List<Movie> getListMovies() => moviesList; 
 
   updateMovies(String query) async {
     if (query=="")
-     query="Superman";
+     query="Avengers";
    
     Iterable<dynamic> movies;
     final response = await http
@@ -19,8 +19,16 @@ class SearchMovies extends ChangeNotifier {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = result["Search"];
+     // print(result["Search"]);
       print(movies);
       moviesList = movies.map((movie) => Movie.fromJson(movie)).toList();
+      for(int i=0;i<moviesList.length;i++)
+      {
+       print ("ID  "+moviesList[i].imdbId);
+              moviesList[i].setMovieDetails();
+            //notifyListeners();
+      }
+     
     }
     notifyListeners();
     

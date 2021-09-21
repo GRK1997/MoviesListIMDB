@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:movieslist/models/SearchMovies.dart';
 import 'package:movieslist/models/movie.dart';
 import 'package:movieslist/widgets/moviesWidget.dart';
-
+import 'package:movieslist/models/Colors.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(App());
+  runApp(App(
+    
+  ));
 }
 
 class App extends StatefulWidget {
@@ -17,7 +19,6 @@ class App extends StatefulWidget {
 
 class _App extends State<App> {
 
-  List<Movie> _movies = new List<Movie>(); 
 
   @override
   void initState() {
@@ -25,26 +26,16 @@ class _App extends State<App> {
   
   }
 
- 
 
-
-  
 
   @override
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      
+      debugShowCheckedModeBanner: false,
       title: "Movies App",
       home: Scaffold(
-        appBar: AppBar(
-        title: Text(
-          "Home",
-          style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 30),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-      ),
+      backgroundColor: color2,
       //extendBodyBehindAppBar: true,
         body:ChangeNotifierProvider(
           create: (context)=>SearchMovies(),

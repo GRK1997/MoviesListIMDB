@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:movieslist/models/Colors.dart';
 import 'package:movieslist/models/SearchMovies.dart';
-import 'package:movieslist/models/movie.dart';
+import 'package:movieslist/widgets/DetailsScreen.dart';
+//import 'package:movieslist/models/movie.dart';
 import 'search_widget.dart';
 
 import 'package:provider/provider.dart';
@@ -14,7 +16,7 @@ class MoviesWidget extends StatefulWidget {
 
 class _MoviesWidgetState extends State<MoviesWidget> {
   Iterable movies;
-  String query = 'Superman';
+  String query = 'Avengers:Endgame';
   Timer debouncer;
   SearchMovies moviesData;
   @override
@@ -29,10 +31,13 @@ class _MoviesWidgetState extends State<MoviesWidget> {
     super.initState();
   }
 
-  Widget buildSearch() => SearchWidget(
-        text: query,
-        hintText: 'Search for Movies',
-        onChanged: searchMovie,
+  Widget buildSearch() => Padding(
+        padding: const EdgeInsets.only(top: 35.0),
+        child: SearchWidget(
+          text: query,
+          hintText: 'Search for Movies',
+          onChanged: searchMovie,
+        ),
       );
 
   void debounce(
@@ -49,6 +54,9 @@ class _MoviesWidgetState extends State<MoviesWidget> {
   Future searchMovie(String query) async => debounce(() async {
         if (!mounted) return;
         moviesData.updateMovies(query);
+        setState(() {
+          
+        });
       });
   @override
   Widget build(BuildContext context) {
@@ -63,29 +71,111 @@ class _MoviesWidgetState extends State<MoviesWidget> {
                       itemCount: data.getListMovies().length,
                       itemBuilder: (context, index) {
                         final movie = data.getListMovies()[index];
-
-                        return Card(
-                          elevation: 2,
+                        //  print("Widget Data"+movie.rating.toString());
+                        return Container(
+                          padding: EdgeInsets.only(bottom: 20),
+                          width: 200,
                           child: ListTile(
-                              title: Row(
+                              title: Column(
                             children: [
-                              SizedBox(
-                                  width: 100,
-                                  child: ClipRRect(
-                                    child: Image.network(movie.poster),
-                                    borderRadius: BorderRadius.circular(10),
-                                  )),
-                              Flexible(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(movie.title),
-                                      Text(movie.year)
-                                    ],
+                              Stack(
+                                //fit: StackFit.expand,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => DetailsScreen(
+                                                  movie: movie,
+                                                )),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              10 *
+                                              2.8,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(30)),
+                                        image: DecorationImage(
+                                          fit: BoxFit.fitWidth,
+                                          image: NetworkImage(movie.poster),
+                                        ),
+                                      ),
+                                    ),
                                   ),
+                                  Positioned(
+                                    top: 15.4,
+                                    left: 10,
+                                    child: Container(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Icon(
+                                            Icons.star,
+                                            color: color5,
+                                            size: 20,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 4.0),
+                                            child: Text(
+                                              movie.rating.toString() + "/10",
+                                              style: TextStyle(
+                                                  color: color5, fontSize: 15),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              10 *
+                                              .4,
+                                      width: MediaQuery.of(context).size.width /
+                                          10 *
+                                          2,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withOpacity(0.7),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(12)),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 15, top: 5),
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      movie.title,
+                                      style: TextStyle(
+                                          color: color5, fontSize: 20),
+                                    ),
+                                    //  Text(movie.year,style: TextStyle(color: color5,fontSize: 20),)
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(left: 15, top: 8),
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.access_time,
+                                      color: color3,
+                                    ),
+                                    Text("  " + movie.runtime.toString(),
+                                        style: TextStyle(
+                                          color: color3,
+                                        )),
+                                  ],
                                 ),
                               )
                             ],
