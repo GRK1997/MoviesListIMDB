@@ -40,28 +40,12 @@ var movies;
       this.writer=movies["Writer"];
       this.ratingsOther=movies["Ratings"];
       this.language=movies["Language"];
-     // print("Rating:"+this.rating);
-     // print("Runtime:"+this.runtime);
-    
- 
-    //print("Rating: "+det.getrating());
-    //print("Runtime: "+det.getruntime());
-      //Movie.runtimetemp=movies["Runtime"];
-      
-     // print(result["Search"]);
-     // print(movies);
-     // moviesList = movies.map((movie) => Movie.fromJson(movie)).toList();
+  
     }
 }
 
    factory Movie.fromJson(Map<String, dynamic> json) {
-    //String id=json["imdbID"];
-   
-   // Movie.setMovieDetails(id);
-      
- //  print(_det.length);
-
-    //print("Runtime of Movie"+runtimetemp);
+    
     return Movie(
       imdbId: json["imdbID"], 
       poster: json["Poster"], 

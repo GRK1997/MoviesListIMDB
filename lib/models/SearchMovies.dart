@@ -24,8 +24,7 @@ class SearchMovies extends ChangeNotifier {
       moviesList = movies.map((movie) => Movie.fromJson(movie)).toList();
       for(int i=0;i<moviesList.length;i++)
       {
-       print ("ID  "+moviesList[i].imdbId);
-              moviesList[i].setMovieDetails();
+             await moviesList[i].setMovieDetails();
             //notifyListeners();
       }
      

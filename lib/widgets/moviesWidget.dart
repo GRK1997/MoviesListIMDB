@@ -54,9 +54,7 @@ class _MoviesWidgetState extends State<MoviesWidget> {
   Future searchMovie(String query) async => debounce(() async {
         if (!mounted) return;
         moviesData.updateMovies(query);
-        setState(() {
-          
-        });
+        
       });
   @override
   Widget build(BuildContext context) {
