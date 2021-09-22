@@ -17,7 +17,7 @@ class MoviesWidget extends StatefulWidget {
 
 class _MoviesWidgetState extends State<MoviesWidget> {
   
-  Iterable movies;
+  
   String query = 'Avengers';
   Timer debouncer;
   SearchMovies moviesData;
