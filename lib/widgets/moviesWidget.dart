@@ -10,13 +10,15 @@ import 'search_widget.dart';
 import 'package:provider/provider.dart';
 
 class MoviesWidget extends StatefulWidget {
+ 
   @override
   _MoviesWidgetState createState() => _MoviesWidgetState();
 }
 
 class _MoviesWidgetState extends State<MoviesWidget> {
+  
   Iterable movies;
-  String query = 'Avengers:Endgame';
+  String query = 'Avengers';
   Timer debouncer;
   SearchMovies moviesData;
   @override
@@ -37,6 +39,7 @@ class _MoviesWidgetState extends State<MoviesWidget> {
           text: query,
           hintText: 'Search for Movies',
           onChanged: searchMovie,
+          
         ),
       );
 
@@ -53,8 +56,10 @@ class _MoviesWidgetState extends State<MoviesWidget> {
 
   Future searchMovie(String query) async => debounce(() async {
         if (!mounted) return;
-        moviesData.updateMovies(query);
-        
+       
+         moviesData.updateMovies(query);
+
+        //Navigator.pop(context);
       });
   @override
   Widget build(BuildContext context) {
@@ -70,6 +75,8 @@ class _MoviesWidgetState extends State<MoviesWidget> {
                       itemBuilder: (context, index) {
                         final movie = data.getListMovies()[index];
                         //  print("Widget Data"+movie.rating.toString());
+                        if(data!=null)
+                        {
                         return Container(
                           padding: EdgeInsets.only(bottom: 20),
                           width: 200,
@@ -179,6 +186,9 @@ class _MoviesWidgetState extends State<MoviesWidget> {
                             ],
                           )),
                         );
+                        }
+                        else
+                        return Center(child: CircularProgressIndicator());
                       })
                   : Center(child: CircularProgressIndicator()),
             );

@@ -3,6 +3,8 @@ import 'package:movieslist/models/movie.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:movieslist/widgets/moviesWidget.dart';
+
 class SearchMovies extends ChangeNotifier {
   List<Movie> moviesList;
   List<Movie> getListMovies() => moviesList; 
@@ -21,6 +23,8 @@ class SearchMovies extends ChangeNotifier {
       movies = result["Search"];
      // print(result["Search"]);
       print(movies);
+      if(movies!=null)
+      {
       moviesList = movies.map((movie) => Movie.fromJson(movie)).toList();
       for(int i=0;i<moviesList.length;i++)
       {
@@ -29,6 +33,10 @@ class SearchMovies extends ChangeNotifier {
       }
      
     }
+   
+    
+    }
+
     notifyListeners();
     
   }

@@ -20,7 +20,7 @@ import 'dart:convert';
   setMovieDetails()async
 {
 // movieDetails.clear();
-  print("Id:"+this.imdbId.toString());
+ // print("Id:"+this.imdbId.toString());
 var movies;
     final response =  await http
         .get("http://www.omdbapi.com/?i=" + this.imdbId + "&apikey=f96c7179");
@@ -29,7 +29,7 @@ var movies;
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = result;
-      print("MovieData: "+movies.toString());
+     // print("MovieData: "+movies.toString());
       this.rating=movies["imdbRating"];
       this.runtime=movies["Runtime"];
       this.genre=movies["Genre"];

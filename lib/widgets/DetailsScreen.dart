@@ -79,19 +79,20 @@ class _DetailsScreen extends State<DetailsScreen> {
                         ])),
                   ),
                   Positioned(
-                    top: 230,
+                    top: 215,
                     left: 30,
                     child: Container(
                       width: 300,
                       child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
+                        //  mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             widget.movie.title,
                             style: TextStyle(color: color5, fontSize: 40),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(right: 120),
+                            padding: EdgeInsets.only(top: 5),
                             child: Text(
                               widget.movie.genre,
                               style: TextStyle(
@@ -165,24 +166,24 @@ class _DetailsScreen extends State<DetailsScreen> {
                           color: color2,
                           borderRadius: BorderRadius.all(Radius.circular(14))),
                       child: Container(
-                        padding: EdgeInsets.only(top: 25, left: 25, right: 25),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                        padding: EdgeInsets.only(top: 6, left: 25, right: 25,bottom: 4),
+                        child: Row(
+                          //crossAxisAlignment: CrossAxisAlignment.start,
+                          // mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              //  crossAxisAlignment: CrossAxisAlignment.start,
+                            Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  padding: EdgeInsets.only(bottom: 10),
+                                //  padding: EdgeInsets.only(bottom: 10),
                                   width: 150,
                                   child: RatingBar.builder(
                                     ignoreGestures: true,
                                     maxRating: 10,
                                     itemSize: 20,
                                     initialRating:
-                                        double.parse(widget.movie.rating),
+                                        double.parse(widget.movie.rating) / 2,
                                     minRating: 1,
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
@@ -198,44 +199,57 @@ class _DetailsScreen extends State<DetailsScreen> {
                                     },
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 100.0),
-                                  child: Text(
+                                Text(
+                                  widget.movie.ratingsOther[0]["Source"],
+                                  style: TextStyle(
+                                      color: color5.withOpacity(0.5),
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  widget.movie.ratingsOther[1]["Source"],
+                                  style: TextStyle(
+                                      color: color5.withOpacity(0.5),
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  widget.movie.ratingsOther[2]["Source"],
+                                  style: TextStyle(
+                                      color: color5.withOpacity(0.5),
+                                      fontSize: 20),
+                                )
+                              ],
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
                                     widget.movie.rating,
                                     style: TextStyle(
                                         color: Colors.amber, fontSize: 20),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Text(
-                                widget.movie.ratingsOther[0]["Source"] +
-                                    "    " +
+                                  Text(
                                     widget.movie.ratingsOther[0]["Value"],
-                                style: TextStyle(
-                                    color: color5.withOpacity(0.5),
-                                    fontSize: 20),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Text(
-                                widget.movie.ratingsOther[1]["Source"] +
-                                    "                  " +
+                                    style: TextStyle(
+                                        color: color5.withOpacity(0.5),
+                                        fontSize: 20),
+                                  ),
+                                  Text(
                                     widget.movie.ratingsOther[1]["Value"],
-                                style: TextStyle(
-                                    color: color5.withOpacity(0.5),
-                                    fontSize: 20),
+                                    style: TextStyle(
+                                        color: color5.withOpacity(0.5),
+                                        fontSize: 20),
+                                  ),
+                                  Text(
+                                    widget.movie.ratingsOther[2]["Value"],
+                                    style: TextStyle(
+                                        color: color5.withOpacity(0.5),
+                                        fontSize: 20),
+                                  )
+                                ],
                               ),
-                            ),
-                            Text(
-                              widget.movie.ratingsOther[2]["Source"] +
-                                  "                           " +
-                                  widget.movie.ratingsOther[2]["Value"],
-                              style: TextStyle(
-                                  color: color5.withOpacity(0.5), fontSize: 20),
                             )
                           ],
                         ),
@@ -266,7 +280,7 @@ class _DetailsScreen extends State<DetailsScreen> {
                             Container(
                                 padding: EdgeInsets.only(right: 20),
                                 child: Image.asset(
-                                  "Assets/Group 356.png",
+                                  "Assets/Group 357.png",
                                   width: 25,
                                 )),
                             Flexible(
@@ -285,7 +299,7 @@ class _DetailsScreen extends State<DetailsScreen> {
                             Container(
                                 padding: EdgeInsets.only(right: 20),
                                 child: Image.asset(
-                                  "Assets/Group 357.png",
+                                  "Assets/Vector.png",
                                   width: 25,
                                 )),
                             Flexible(
@@ -304,7 +318,7 @@ class _DetailsScreen extends State<DetailsScreen> {
                             Container(
                                 padding: EdgeInsets.only(right: 20),
                                 child: Image.asset(
-                                  "Assets/Group 358.png",
+                                  "Assets/Group 356.png",
                                   width: 25,
                                 )),
                             Flexible(
@@ -322,7 +336,7 @@ class _DetailsScreen extends State<DetailsScreen> {
                             Container(
                                 padding: EdgeInsets.only(right: 20),
                                 child: Image.asset(
-                                  "Assets/Vector.png",
+                                  "Assets/Group 358.png",
                                   width: 25,
                                 )),
                             Flexible(
@@ -345,37 +359,41 @@ class _DetailsScreen extends State<DetailsScreen> {
                 child: Center(
                   child: Column(
                     //crossAxisAlignment: CrossAxisAlignment.start,
-                   // mainAxisAlignment: MainAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
                         padding: EdgeInsets.all(20),
                         child: Column(
-                         
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Plot",style: TextStyle(color: color5,fontSize: 25),),
-                            SizedBox(height: 5,),
                             Text(
-                             '"'+ widget.movie.plot+'"',
+                              "Plot",
+                              style: TextStyle(color: color5, fontSize: 25),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              '"' + widget.movie.plot + '"',
                               style: TextStyle(
-                                  color: color5.withOpacity(.5),
-                                  fontSize: 16),
+                                  color: color5.withOpacity(.5), fontSize: 16),
                             )
                           ],
                         ),
                       ),
                       Container(
-                         padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(20),
                         height: 200,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Directors",style: TextStyle(color: color5,fontSize: 25),),
+                            Text(
+                              "Directors",
+                              style: TextStyle(color: color5, fontSize: 25),
+                            ),
                             Expanded(
-                            
                               child: ListView.builder(
-                                
-                                padding: EdgeInsets.only( right: 50, top: 10),
+                                  padding: EdgeInsets.only(right: 50, top: 10),
                                   itemCount: directorsvalues.length,
                                   itemBuilder: (context, index) {
                                     return Padding(
@@ -404,30 +422,37 @@ class _DetailsScreen extends State<DetailsScreen> {
                         ),
                       ),
                       Container(
-                         padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(20),
                         height: 250,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Actors",style: TextStyle(color: color5,fontSize: 25),),
+                            Text(
+                              "Actors",
+                              style: TextStyle(color: color5, fontSize: 25),
+                            ),
                             Flexible(
-                             // fit: FlexFit.loose,
+                              // fit: FlexFit.loose,
                               child: ListView.builder(
                                   itemCount: actorsvalues.length,
                                   itemBuilder: (context, index) {
                                     return Padding(
-                                      padding: const EdgeInsets.only(top:5,right: 70,bottom: 10),
+                                      padding: const EdgeInsets.only(
+                                          top: 5, right: 70, bottom: 10),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.1),
-                                          borderRadius: BorderRadius.circular(6)
-                                        ),
+                                            color:
+                                                Colors.white.withOpacity(0.1),
+                                            borderRadius:
+                                                BorderRadius.circular(6)),
                                         height: 30,
                                         width: 50,
-                                        child: 
-                                           Center(child: Text(actorsvalues[index],style: TextStyle(
-                                                color: color5.withOpacity(.5)),)),
-                                       
+                                        child: Center(
+                                            child: Text(
+                                          actorsvalues[index],
+                                          style: TextStyle(
+                                              color: color5.withOpacity(.5)),
+                                        )),
                                       ),
                                     );
                                   }),
@@ -436,31 +461,38 @@ class _DetailsScreen extends State<DetailsScreen> {
                         ),
                       ),
                       Container(
-                         padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(20),
                         height: 200,
                         child: Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Writers",style: TextStyle(color: color5,fontSize: 25),),
+                            Text(
+                              "Writers",
+                              style: TextStyle(color: color5, fontSize: 25),
+                            ),
                             Flexible(
                               fit: FlexFit.loose,
                               child: ListView.builder(
-                                padding: EdgeInsets.only(right: 25),
+                                  padding: EdgeInsets.only(right: 25),
                                   itemCount: writervalues.length,
                                   itemBuilder: (context, index) {
                                     return Padding(
-                                      padding: EdgeInsets.only(top:5,right: 50,bottom: 10),
+                                      padding: EdgeInsets.only(
+                                          top: 5, right: 50, bottom: 10),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.1),
-                                          borderRadius: BorderRadius.circular(6)
-                                        ),
+                                            color:
+                                                Colors.white.withOpacity(0.1),
+                                            borderRadius:
+                                                BorderRadius.circular(6)),
                                         height: 30,
                                         width: 50,
-                                        child: 
-                                           Center(child: Text(writervalues[index],style: TextStyle(
-                                                color: color5.withOpacity(.5)),)),
-                                        
+                                        child: Center(
+                                            child: Text(
+                                          writervalues[index],
+                                          style: TextStyle(
+                                              color: color5.withOpacity(.5)),
+                                        )),
                                       ),
                                     );
                                   }),
